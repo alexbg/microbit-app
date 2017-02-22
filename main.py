@@ -2,12 +2,12 @@ from microbit import *
 from lantern import Lantern
 from paint import Paint
 
-apps = ["",Lantern,Paint]
+apps = [Lantern,Paint]
 finalPosition = 0
 
 class Main:
     def __init__(self):
-        self.position = 1
+        self.position = 0
         self.exit = False
         self.maxPosition = 2
         self.update()
@@ -18,12 +18,9 @@ class Main:
             self.checkButtons()
 
             if self.position == 0:
-                display.show("E")
-
-            elif self.position == 1:
                 display.show("L")
 
-            elif self.position == 2:
+            elif self.position == 1:
                 display.show("P")
 
             if self.checkAccelerometer():
@@ -57,10 +54,5 @@ class Main:
         if accelerometer.get_y() < -40:
             return True
 
-
 Main()
-
-if finalPosition == 0:
-    display.scroll("BYE :)")
-else:
-    apps[finalPosition]()
+apps[finalPosition]()
